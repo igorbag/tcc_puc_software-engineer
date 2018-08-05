@@ -1,0 +1,25 @@
+{
+  "name": "SchoolSystem",
+  "version": "1.0.0",
+  "description": "Sistema de gerenciamento escolar para facilitar o atendimento",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prestart": "npm install",
+    "start": "nodemon --inspect ./bin/www"
+  },
+  "keywords": [
+    "MongoDB",
+    "Nodejs",
+    "Express"
+  ],
+  "author": "Igor Rotondo Bagliotti",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "cors": "^2.7.1",
+    "express": "^4.14.0",
+    "mongoose": "^4.5.8",
+    "nodemon": "^1.14.3"
+  }
+}
