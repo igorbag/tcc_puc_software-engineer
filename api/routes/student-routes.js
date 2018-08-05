@@ -3,6 +3,9 @@
 const router = require('express').Router()
 const ctrl = require('../controllers/student-controller');
 
+router.get('/', (req, res) => {
+    res.send('Bem vindo - API NodeJs');
+});
 router.get('/student', ctrl.getAll);
 router.get('/student/:id', ctrl.getById);
 router.post('/student', ctrl.create);
