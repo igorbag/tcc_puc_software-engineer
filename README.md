@@ -1,5 +1,11 @@
 API REST Gerenciamento de Alunos TCC PUC - Engenharia de Software
 
+Técnologias:
+- Nodejs
+- MongoDB
+- Express
+- ES6
+
 Execução do projeto local
 - git clone do projeto
 - npm install
