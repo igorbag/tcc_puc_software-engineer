@@ -1,0 +1,10 @@
+Execução do projeto:
+
+Criar a imagem no docker:
+docker build -t <your username>/node-web-app .
+
+docker run -p [PORT EXTERNA DO SERVIDOR WEB]:8080 -d <your username>/node-web-app
+
+docker exec -it <container id> /bin/bash
+
+docker ps

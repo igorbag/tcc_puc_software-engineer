@@ -1,7 +1,14 @@
 'use strict';
 
 const messages = require('../i18n/message-pt');
-
+/**
+ * Modulo responsavel por gerenciar as mensagens do projeto
+ * 
+ * @param {Erro} err 
+ * @param {Request} req 
+ * @param {Response} res 
+ * @param {Proximo} next 
+ */
 module.exports = (err, req, res, next) => {
   err.messages = [];
 

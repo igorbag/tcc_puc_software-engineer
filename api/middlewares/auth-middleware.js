@@ -4,6 +4,14 @@ const AUTHORIZATION_MODEL = 'Basic';
 const USER_PASS_SPLIT = ':';
 const Student = require('../models/student-model')
 
+/**
+ * Modulo responsavel por gerenciar um middleware de autenticacao 
+ * Basic
+ * 
+ * @param {Request} req 
+ * @param {Response} res 
+ * @param {Proximo} next 
+ */
 module.exports = (req, res, next) => {
   if(!req.headers.authorization) {
     return res.status(403).send();

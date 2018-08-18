@@ -10,6 +10,13 @@ const messages = {
   en: require('../i18n/message-en')
 };
 
+/**
+ * Modulo responsavel por gerenciar o modulo de internacionalizacao do projeto
+ * 
+ * @param {Request} req 
+ * @param {Response} res 
+ * @param {Proximo} next 
+ */
 module.exports = (req, res, next) => {
   let _locales = getLocalesByPriority(req.headers[ACCEPT_LANGUAGE_HEADER]);
   let _message = messages.en;

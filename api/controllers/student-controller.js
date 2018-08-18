@@ -3,10 +3,13 @@
 const Student = require("../models/student-model");
 const ctrl = {};
 
-let hasStudent = function(x, y) {
-  return x + y;
-};
 
+/**
+ * Metodo responsavel por buscar todos os registros
+ * 
+ * @param {Request} req 
+ * @param {Response} res 
+ */
 ctrl.getAll = (req, res, next) => {
   Student.getAll()
     .then(data => {
@@ -17,6 +20,12 @@ ctrl.getAll = (req, res, next) => {
     });
 };
 
+/**
+ * Metodo responsavel por buscar registro por Id
+ * 
+ * @param {Request} req 
+ * @param {Response} res 
+ */
 ctrl.getById = (req, res, next) => {
   Student.getById(req.params.id)
     .then(data => {
@@ -27,8 +36,13 @@ ctrl.getById = (req, res, next) => {
     });
 };
 
+/**
+ * Metodo responsavel por cadastrar um novo registro se nao existir
+ * 
+ * @param {Request} req 
+ * @param {Response} res 
+ */
 ctrl.create = (req, res, next) => {
-
 
   Student.findBy({ cpf: req.body.cpf }).then(data => {
     if (data && data != null) {
@@ -52,10 +66,14 @@ ctrl.create = (req, res, next) => {
       });
     });
   });
-
-
 };
 
+/**
+ * Metodo responsavel por atualizar um item
+ * 
+ * @param {Request} req 
+ * @param {Response} res 
+ */
 ctrl.update = (req, res, next) => {
   Student.update(req.params.id, req.body)
     .then(data => {
@@ -66,6 +84,13 @@ ctrl.update = (req, res, next) => {
     });
 };
 
+/**
+ * Metodo responsavel por remover um item
+ * 
+ * @param {Request} req 
+ * @param {Response} res 
+ * @param {Proximo} next 
+ */
 ctrl.remove = (req, res, next) => {
   Student.remove(req.params.id)
     .then(data => {
@@ -76,8 +101,24 @@ ctrl.remove = (req, res, next) => {
     });
 };
 
-module.exports = ctrl;
+/**
+ * 
+ * Metodo responsavel por prover autenticacao
+ *
+ * @param {Request} req 
+ * @param {Response} res 
+ */
+ctrl.auth = (req, res) => {
 
-function hasStudentByCpf(req, next, res) {
- 
-}
+  Student.authenticate(req.body)
+
+    .then(data => {
+      return res.status(200).send(data);
+    })
+    .catch(err => {
+      return res.status(500).send(err);
+    });
+};
+
+
+module.exports = ctrl;
