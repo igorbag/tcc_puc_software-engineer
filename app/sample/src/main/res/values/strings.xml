@@ -1,0 +1,43 @@
+<resources>
+    <!--AppName-->
+    <string name="app_name">Sistema de Gerenciamento Escolar</string>
+    <!--Labels-->
+    <string name="lbl_sistema_escolar">Sistema Escolar</string>
+    <string name="lbl_entrar">Entrar</string>
+    <string name="lbl_confirmar">Confirmar</string>
+    <string name="lbl_proximo">Próximo</string>
+    <string name="lbl_descricao">Seus estudos nas palmas de suas mãos.</string>
+    <string name="lbl_ger_aluno">Gerenciamento de Alunos</string>
+    <string name="lbl_email_login">Para acessar o app digite o seu e-mail</string>
+    <string name="lbl_senha_login">Agora digite a sua senha do app</string>
+    <string name="lbl_esqueci_senha">Esqueci a minha senha</string>
+    <string name="lbl_error_email">E-mail inválido</string>
+    <string name="lbl_error_required">Campo obrigatório</string>
+    <string name="lbl_login_incorreto">Login e/ou senha incorreto</string>
+    <string name="lbl_error_generic_api">Por gentileza, tente novamente mais tarde.</string>
+    <string name="lbl_user_logged">Olá, %1$s</string>
+    <string name="lbl_welcome">Seja bem vindo</string>
+    <string name="dialog_action_ok">Confirmar</string>
+    <string name="lbl_sucess_alert">Cadastro realizado com sucesso.</string>
+    <string name="lbl_sucess_edit_alert">Alteração realizado com sucesso.</string>
+    <string name="lbl_sucess_remove_alert">Registro deletado com sucesso.</string>
+    <string name="lbl_msg_confirm_delete">Você realmente gostaria de deletar o item?</string>
+
+    <!--Formularios-->
+    <string name="prompt_email_login">E-mail *</string>
+    <string name="prompt_senha_login">Senha *</string>
+    <string name="prompt_cpf">CPF *</string>
+    <string name="prompt_nome">Nome *</string>
+    <string name="prompt_endereco">Endereço *</string>
+    <string name="prompt_estado">UF *</string>
+    <string name="prompt_municipio">Município *</string>
+    <string name="prompt_telefone">Telefone *</string>
+    <string name="prompt_email">E-mail *</string>
+    <string name="prompt_senha">Senha *</string>
+
+    <!--Activity Names-->
+    <string name="lbl_activity_aluno">Gerenciamento de Aluno</string>
+    <string name="lbl_activity_cadastrar_aluno">Cadastrar Aluno</string>
+    <string name="lbl_activity_editar_aluno">Editar Aluno</string>
+    <string name="lbl_activity_visualizar_aluno">Visualizar Aluno</string>
+</resources>

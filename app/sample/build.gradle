@@ -1,0 +1,142 @@
+apply plugin: 'com.android.application'
+apply from: '../config/quality.gradle'
+apply plugin: 'com.jakewharton.butterknife'
+apply plugin: 'com.android.application'
+apply plugin: 'org.greenrobot.greendao' // apply plugin
+
+android {
+    dataBinding {
+        enabled = true
+    }
+
+    compileSdkVersion 27
+    buildToolsVersion "27.0.3"
+
+    signingConfigs {
+        config {
+            keyAlias 'android'
+            keyPassword 'android'
+            storeFile file('keystore/release.jks')
+            storePassword 'android'
+        }
+    }
+
+
+
+    defaultConfig {
+        applicationId "br.com.igorbagliotti.school"
+        minSdkVersion 15
+        targetSdkVersion 27
+        versionCode 6
+        versionName "0.6"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled true
+            shrinkResources true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.config
+        }
+        debug {
+            applicationIdSuffix ".debug"
+            debuggable true
+            signingConfig signingConfigs.config
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    packagingOptions {
+        exclude 'META-INF/DEPENDENCIES'
+        exclude 'LICENSE.txt'
+        exclude 'META-INF/LICENSE'
+        exclude 'META-INF/LICENSE.txt'
+        exclude 'META-INF/NOTICE'
+        exclude 'LICENSE.txt'
+    }
+
+    lintOptions {
+        warning 'InvalidPackage'
+        abortOnError false
+        lintConfig file("${project.rootDir}/config/quality/lint/lint.xml")
+    }
+}
+
+greendao {
+    schemaVersion 1
+    targetGenDir "src/main/java/"
+}
+
+dependencies {
+    final RETROFIT_VERSION = '2.4.0'
+    final OKHTTP_VERSION = '3.11.0'
+    final DAGGER_VERSION = '2.10'
+
+    implementation project(':library')
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    // Android Native Support Libraries
+    implementation "com.android.support:appcompat-v7:27.1.1"
+    implementation "com.android.support:support-v4:27.1.1"
+    implementation "com.android.support:design:27.1.1"
+    implementation "com.android.support:cardview-v7:27.1.1"
+    implementation "com.android.support:recyclerview-v7:27.1.1"
+    implementation "com.android.support:support-vector-drawable:27.1.1"
+    implementation "com.android.support:gridlayout-v7:27.1.1"
+    implementation 'com.android.support.constraint:constraint-layout:1.1.2'
+    implementation 'com.android.support:multidex:1.0.3'
+
+    //Apache commons Lang 3
+    implementation 'org.apache.commons:commons-lang3:3.7'
+
+    //----- Dagger
+    implementation "com.google.dagger:dagger:$DAGGER_VERSION"
+    annotationProcessor "com.google.dagger:dagger-compiler:$DAGGER_VERSION"
+    compileOnly 'org.glassfish:javax.annotation:10.0-b28' //Required by Dagger2
+
+    //----- Retrofit
+    implementation("com.squareup.retrofit2:retrofit:$RETROFIT_VERSION") {
+        // exclude Retrofit’s OkHttp peer-dependency module and define your own module import
+        exclude module: 'okhttp'
+    }
+    implementation "com.squareup.retrofit2:converter-gson:$RETROFIT_VERSION"
+    implementation "com.squareup.retrofit2:adapter-rxjava:$RETROFIT_VERSION"
+    implementation "com.squareup.okhttp3:okhttp:$OKHTTP_VERSION"
+    implementation "com.squareup.okhttp3:logging-interceptor:$OKHTTP_VERSION"
+
+    //----- The core of Reactive Programming
+    implementation 'io.reactivex:rxjava:1.3.0'
+    implementation 'io.reactivex:rxandroid:1.2.1'
+
+    //----- Eventbuss
+    implementation 'org.greenrobot:eventbus:3.1.1'
+
+    //----- Butterknife
+    implementation 'com.jakewharton:butterknife:9.0.0-SNAPSHOT'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:9.0.0-SNAPSHOT'
+
+    //----- Easy Permission Management
+    implementation "com.karumi:dexter:5.0.0"
+
+    // Parceler
+    implementation "org.parceler:parceler-api:1.1.6"
+    annotationProcessor "org.parceler:parceler:1.1.6"
+
+    // GreenDao ORM
+    implementation 'org.greenrobot:greendao:3.2.2' // add library
+
+    //----- Testing
+    testImplementation 'junit:junit:4.12'
+    androidTestAnnotationProcessor "com.google.dagger:dagger-compiler:$DAGGER_VERSION"
+    androidTestImplementation 'com.android.support:support-annotations:27.1.1'
+    androidTestImplementation "com.android.support.test:runner:1.0.2"
+    androidTestImplementation "com.android.support.test:rules:1.0.2"
+    androidTestImplementation "com.android.support.test.espresso:espresso-core:3.0.2"
+    androidTestImplementation "org.hamcrest:hamcrest-library:1.3"
+
+
+}
